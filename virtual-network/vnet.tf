@@ -30,7 +30,7 @@ resource "azurerm_virtual_network" "acr-vnet" {
 
   subnet {
     name           = var.ACR_SUBNET_NAME
-    address_prefix = var.ACR_SUBNET_ADDRESS_PREFIX
+    address_prefixes = [var.ACR_SUBNET_ADDRESS_PREFIX]
   }
   
 }
@@ -42,7 +42,7 @@ resource "azurerm_virtual_network" "agent-vnet" {
 
   subnet {
     name           = var.AGENT_SUBNET_NAME
-    address_prefix = var.AGENT_SUBNET_ADDRESS_PREFIX
+    address_prefixes = [var.AGENT_SUBNET_ADDRESS_PREFIX]
   }
 }
 
