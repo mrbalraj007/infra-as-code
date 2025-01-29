@@ -19,7 +19,7 @@ resource "azurerm_public_ip" "public_ip" {
   name                = "agentip"
   resource_group_name = data.azurerm_resource_group.rg-devops.name
   location            = var.LOCATION
-  sku = = "Basic"
+  sku = "Basic"
   allocation_method   = "Dynamic"
 }
 ##Create The network_interface
