@@ -47,7 +47,7 @@ variable "sku_tier" {
 }
 variable "kubernetes_version" {
   description = "Specifies the AKS Kubernetes version"
-  default     = "1.27.9"
+  default     = "1.30.7"
   type        = string
 }
 
@@ -64,8 +64,9 @@ variable "default_node_pool_name" {
 
 variable "default_node_pool_vm_size" {
   description = "Specifies the vm size of the default node pool"
-  default     = "Standard_DS2_v2"
-  type        = string
+  #default     = "Standard_DS2_v2"
+  default = "Standard_A2_v2"
+  type    = string
 }
 
 
@@ -79,7 +80,7 @@ variable "pod_subnet_id" {
 variable "default_node_pool_enable_auto_scaling" {
   description = "(Optional) Whether to enable auto-scaler. Defaults to false."
   type        = bool
-  default     = true
+  default     = false
 }
 variable "default_node_pool_availability_zones" {
   description = "Specifies the availability zones of the default node pool"

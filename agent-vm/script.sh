@@ -5,7 +5,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 sudo apt-get update
 sudo apt-get install -y docker-ce
-sudo usermod -aG docker shubham
+sudo usermod -aG docker azureuser
 sudo systemctl enable docker
 sudo systemctl start docker
 sudo chmod 666 /var/run/docker.sock
@@ -33,7 +33,7 @@ tar zxvf vsts-agent-linux-x64.tar.gz -C myagent
 chmod -R 777 myagent
 # Configuration of the self-hosted agent
 cd myagent
-./config.sh --unattended --url https://dev.azure.com/Learnazure162022 --auth pat --token zzzzzz --pool Default --agent aksagent --acceptTeeEula
+./config.sh --unattended --url https://dev.azure.com/<Org ID> --auth pat --token <Token value> --pool Default --agent aksagent --acceptTeeEula
 # Start the agent service
 sudo ./svc.sh install
 sudo ./svc.sh start
