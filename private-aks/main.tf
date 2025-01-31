@@ -1,33 +1,42 @@
 ### Retrive Vnet Ids
 
 data "azurerm_application_gateway" "appgateway" {
-  name                = "ApplicationGateway1"
+  #name                = "ApplicationGateway1"
+  name                = var.APP_GATEWAY_NAME
   resource_group_name = var.RESOURCE_GROUP_NAME
 }
 data "azurerm_subnet" "aks-subnet" {
-  name                 = "aks-subnet"
-  virtual_network_name = "aks-vnet"
+  #name                 = "aks-subnet"
+  name = var.AKS_SUBNET_NAME
+  #virtual_network_name = "aks-vnet"
+  virtual_network_name = var.AKS_VNET_NAME
   resource_group_name  = var.RESOURCE_GROUP_NAME
 }
 data "azurerm_virtual_network" "aks-vnet" {
-  name                = "aks-vnet"
+  #name                = "aks-vnet"
+  name = var.AKS_VNET_NAME
   resource_group_name = var.RESOURCE_GROUP_NAME
 }
 data "azurerm_virtual_network" "acr-vnet" {
-  name                = "acr-vnet"
+  #name                = "acr-vnet"
+  name = var.ACR_VNET_NAME
   resource_group_name = var.RESOURCE_GROUP_NAME
 }
 data "azurerm_virtual_network" "agent-vnet" {
-  name                = "agent-vnet"
+  #name                = "agent-vnet"
+  name = var.AGENT_VNET_NAME
   resource_group_name = var.RESOURCE_GROUP_NAME
 }
 data "azurerm_container_registry" "acr" {
-  name                = "myacr30012025"
+  #name                = "myacr30012025"
+  name = var.PRIVATE_ACR_NAME
   resource_group_name = var.RESOURCE_GROUP_NAME
 }
 data "azurerm_subnet" "appgw-subnet" {
-  name                 = "appgw-subnet"
-  virtual_network_name = "aks-vnet"
+  #name                 = "appgw-subnet"
+  name= var.APPGW_SUBNET_NAME
+  #virtual_network_name = "aks-vnet"
+  virtual_network_name = var.VIRTUAL_NETWORK_NAME
   resource_group_name  = var.RESOURCE_GROUP_NAME
 }
 ### DNS zone

@@ -181,3 +181,49 @@ variable "environment" {
   default     = "dev"
   type        = string
 }
+
+# Added a new variable for the fetch data from Environment
+variable "APP_GATEWAY_NAME" {
+  description = "Specifies the name of the application Gateway Name"
+  type        = string
+}
+
+variable "AKS_VNET_NAME" {
+  description = "Specifies the name of the virtual network"
+  type        = string
+}
+
+
+variable "AKS_SUBNET_NAME" {
+  description = "Specifies the name of the subnet"
+  type        = string
+}
+
+variable "ACR_VNET_NAME" {
+  description = "Specifies the name of the ACR vNet"
+  type        = string
+}
+
+variable "AGENT_VNET_NAME" {
+  description = "Specifies the name of the ACR vNet"
+  type        = string
+}
+
+variable "PRIVATE_ACR_NAME" {
+  description = "Specifies the name of the ACR vNet"
+  type        = string
+}
+
+variable "APPGW_SUBNET_NAME" {
+  description = "Specifies the name of the ACR vNet"
+  type        = string
+}
+
+
+variable "VIRTUAL_NETWORK_NAME" {
+  description = "Specifies the name of the Virtual Network"
+  type        = string
+}
+
+
+
