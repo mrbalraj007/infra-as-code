@@ -1,4 +1,4 @@
-
+# Retrieve the subnet id and name from the data source
 data "azurerm_subnet" "aks-subnet" {
   name                 = "aks-subnet"
   virtual_network_name = "aks-vnet"
