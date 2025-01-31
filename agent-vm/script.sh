@@ -26,15 +26,48 @@ sudo apt-get update
 sudo apt-get install -y dotnet-sdk-7.0  # Adjust version as needed
 # Install Entity Framework Core tools globally
 dotnet tool install --global dotnet-ef --version 7.0.3
-# Commands to install the self-hosted agent
+
+# Commands to install/reinstall the self-hosted agent
+
+# Download the agent package (you might want to check for the latest version)
 curl -o vsts-agent-linux-x64.tar.gz https://vstsagentpackage.azureedge.net/agent/3.234.0/vsts-agent-linux-x64-3.234.0.tar.gz
+
+# Create the agent directory (or clear it if it exists)
+if [ -d "myagent" ]; then
+  echo "Agent directory 'myagent' exists. Removing..."
+  sudo ./svc.sh stop  # Stop the service if it's running
+  sudo ./svc.sh uninstall # Uninstall the service. Important to avoid issues.
+  rm -rf myagent
+fi
 mkdir myagent
+
+# Extract the agent
 tar zxvf vsts-agent-linux-x64.tar.gz -C myagent
-chmod -R 777 myagent
-# Configuration of the self-hosted agent
+
+# Set permissions (be cautious with 777, consider more restrictive permissions)
+chmod -R 777 myagent # Consider changing this. 777 is generally too open.
+
+# Configure the agent
 cd myagent
+
+# Check if an agent with the same name exists and remove if it does
+if [[ -d "_work/_tasks" && $(grep -q "aksagent" _work/_tasks/*/*/config.json) ]]; then
+    echo "Agent 'aksagent' found in _work directory.  Removing..."
+    # Stop and uninstall the agent if it's running (improve this section if needed)
+    if [ -f ./svc.sh ]; then
+        sudo ./svc.sh stop
+        sudo ./svc.sh uninstall
+    fi
+    # Clean up the agent configuration files to avoid issues
+    find . -name "config.json" -delete
+    find . -name ".agent" -delete
+    find . -name "_diag" -delete # Remove logs, potentially helpful for debugging
+    find . -name "_work" -delete # Remove work directory
+fi
 ./config.sh --unattended --url https://dev.azure.com/<Org ID> --auth pat --token <Token value> --pool Default --agent aksagent --acceptTeeEula
+
 # Start the agent service
 sudo ./svc.sh install
 sudo ./svc.sh start
+
 exit 0
