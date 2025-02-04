@@ -1,10 +1,12 @@
 data "azurerm_application_gateway" "appgateway" {
-  name                = "ApplicationGateway1"
+  #name                = "ApplicationGateway1"
+  name = var.APP_GATEWAY_NAME
   resource_group_name = var.RESOURCE_GROUP_NAME
 }
 
 data "azurerm_public_ip" "appgwpublicip" {
-  name                = "appgwpublicip"
+  #name                = "appgwpublicip"
+  name = var.APPGW_PUBLIC_IP_NAME
   resource_group_name = var.RESOURCE_GROUP_NAME
 }
 

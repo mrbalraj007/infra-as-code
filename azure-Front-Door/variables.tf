@@ -9,15 +9,15 @@ variable "APP_GATEWAY_NAME" {
 
 }
 
-variable "LOCATION" {
-  type        = string
-  description = "Azure region where to create resources."
-}
+# variable "LOCATION" {
+#   type        = string
+#   description = "Azure region where to create resources."
+# }
 
-variable "VIRTUAL_NETWORK_NAME" {
-  type        = string
-  description = "Virtual network name. This service will create subnets in this network."
-}
+# variable "APP_GATEWAY_NAME" {
+#   type        = string
+#   description = "define the name of the application gateway"
+# }
 
 variable "APPGW_PUBLIC_IP_NAME" {
   type        = string
