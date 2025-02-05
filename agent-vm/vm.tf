@@ -1,16 +1,21 @@
 ### Retrive Resource group
 data "azurerm_resource_group" "rg-devops" {
-  name = "rg-devops"
+  #name = "rg-devops"
+  name = var.RESOURCE_GROUP_NAME
 }
 ### Retrive subnet info
 data "azurerm_subnet" "agent-subnet" {
-  name                 = "agent-subnet"
-  virtual_network_name = "agent-vnet"
+  #name                 = "agent-subnet"
+  name = var.AGENT_SUBNET_NAME
+  #virtual_network_name = "agent-vnet"
+  virtual_network_name = var.AGENT_VNET_NAME
+
   resource_group_name  = data.azurerm_resource_group.rg-devops.name
 }
 ### Retrive Vnet info
 data "azurerm_virtual_network" "agent-vnet" {
-  name                = "agent-vnet"
+  #name                = "agent-vnet"
+  name                = var.AGENT_VNET_NAME
   resource_group_name = data.azurerm_resource_group.rg-devops.name
 }
 

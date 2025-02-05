@@ -23,3 +23,9 @@ variable "APPGW_PUBLIC_IP_NAME" {
   type        = string
   description = "PUBLIC IP. This service will create subnets in this network."
 }
+
+variable "APPGW_SUBNET_NAME" {
+  type        = string
+  description = "PUBLIC IP. This service will create subnets in this network."
+}
+

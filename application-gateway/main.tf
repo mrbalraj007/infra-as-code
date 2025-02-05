@@ -2,13 +2,16 @@
 data "azurerm_subscription" "current" {}
 
 data "azurerm_subnet" "appgw-subnet" {
-  name                 = "appgw-subnet"
+  #name                 = "appgw-subnet"
+  name = var.APPGW_SUBNET_NAME
+
   virtual_network_name = var.VIRTUAL_NETWORK_NAME
   resource_group_name  = var.RESOURCE_GROUP_NAME
 }
 
 data "azurerm_resource_group" "rg-devops" {
-  name = "rg-devops"
+  #name = "rg-devops"
+  name = var.RESOURCE_GROUP_NAME
 }
 #
 # Application Gateway

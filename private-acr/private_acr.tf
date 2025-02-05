@@ -1,15 +1,18 @@
 
 ### Retrive ACR Vnet Id
 data "azurerm_virtual_network" "acr-vnet" {
-  name                = "acr-vnet"
+  #name                = "acr-vnet"
+  name = var.ACR_VNET_NAME
   resource_group_name = var.RESOURCE_GROUP_NAME
 }
 data "azurerm_virtual_network" "agent-vnet" {
-  name                = "agent-vnet"
+  #name                = "agent-vnet"
+  name = var.AGENT_VNET_NAME
   resource_group_name = var.RESOURCE_GROUP_NAME
 }
 data "azurerm_virtual_network" "aks-vnet" {
-  name                = "aks-vnet"
+  #name                = "aks-vnet"
+  name = var.AKS_VNET_NAME
   resource_group_name = var.RESOURCE_GROUP_NAME
 }
 # Create azure container registry

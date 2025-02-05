@@ -1,6 +1,6 @@
 variable "AKS_VNET_NAME" { type = string }
 variable "AKS_ADDRESS_SPACE" { type = string }
-variable "AKS_SUBNET_NAME1" { type = string }
+variable "AKS_SUBNET_NAME" { type = string }
 variable "AKS_SUBNET_ADDRESS_PREFIX" { type = string }
 variable "APPGW_SUBNET_NAME" { type = string }
 variable "APPGW_SUBNET_ADDRESS_PREFIX" { type = string }
